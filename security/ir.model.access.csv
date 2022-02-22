@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+film_manager,film manager,model_open_cinema_film,group_open_cinema_manager,1,1,1,1

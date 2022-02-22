@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record model="ir.actions.act_window" id="film_list_action">
+            <field name="name">Films</field>
+            <field name="res_model">open_cinema.film</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first course
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="main_open_cinema_menu" name="Open Cinema" groups="group_open_cinema_manager"/>
+      
+        <menuitem id="open_cinema_menu" name="Open Cinema"
+        groups="group_open_cinema_manager"
+                  parent="main_open_cinema_menu"/>
+     
+        <menuitem id="films_menu" name="Films" parent="open_cinema_menu"
+        groups="group_open_cinema_manager"
+                  action="film_list_action"/>
+      
+</odoo>
