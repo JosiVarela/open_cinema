@@ -2,9 +2,9 @@
 {
     'name': "Opencinema",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary':"""
+        Este es un módulo de gestión de cine
+    """,
 
     'description': """
         Programa de gestión de películas
@@ -27,5 +27,9 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/opencinema.xml',
+    ],
+    'application':True,
+    'demo':[
+        'demo/demo.xml'
     ],
 }
