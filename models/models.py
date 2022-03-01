@@ -13,3 +13,4 @@ class Film(models.Model):
     release_date = fields.Date(string='Release')
     year = fields.Char(required=True)
     duration = fields.Integer()
+    sinopsis = fields.Char(string="Sinopse")

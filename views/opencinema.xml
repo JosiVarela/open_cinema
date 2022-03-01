@@ -6,8 +6,57 @@
             <field name="res_model">open_cinema.film</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create the first course
+                <p class="o_view_nocontent_smiling_face">Create the first film
                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="film_tree_view">
+            <field name="name">open_cinema.tree</field>
+            <field name="model">open_cinema.film</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="year"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="film_search_view">
+            <field name="name">open_cinema.search</field>
+            <field name="model">open_cinema.film</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="year"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="film_form_view">
+            <field name="name">open_cinema.form</field>
+            <field name="model">open_cinema.film</field>
+            <field name="arch" type="xml">
+                <form string="Cinema Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Data">
+                                <group>
+                                    <field name="release_date"/>
+                                    <field name="year"/>
+                                    <field name="duration"/>
+                                </group>
+                            </page>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
             </field>
         </record>
 
