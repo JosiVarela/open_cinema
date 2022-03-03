@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+from attr import field
 from setuptools import Require
 from odoo import models, fields, api
 
@@ -15,14 +16,17 @@ class Film(models.Model):
     year = fields.Char(required=True)
     duration = fields.Integer()
     sinopsis = fields.Char(string="Sinopse")
-    screening = fields.One2many('open_cinema.screening', )
+    screening_id = fields.One2many('open_cinema.screening', 'film_id', string = 'Screenings')
+    director_id = fields.Many2one('open_cinema.director', ondelete = 'cascade', string = 'Director', required = True)
     
 class Screening(models.Model):
     _name = 'open_cinema.screening'
     _descrition = 'Open cinema Screening'
     
+    name = fields.Char(string = 'Name', required = 'true')
     film_id = fields.Many2one('open_cinema.film', ondelete = 'cascade', string = 'Film', required = True)
     screening_date = fields.Date(string='Screening Date')
+    responsible_id = fields.Many2one('res.users', ondelete = 'cascade', string = 'Responsible', required = True)
     seats = fields.Integer()
     prize = fields.Float()
     
@@ -32,3 +36,4 @@ class Director(models.Model):
     
     name = fields.Char(string = 'Name', required = True)
     nacionality = fields.Char(string = 'Nacionality')
+    film_director_id = fields.One2many('open_cinema.film', 'director_id', string = "Films")

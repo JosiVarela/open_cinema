@@ -54,6 +54,19 @@
                             <page string="Description">
                                 <field name="description"/>
                             </page>
+                            <page string="Screening">
+                                <field name = "screening_id">
+                                    <tree string = "Screenings">
+                                        <field name = "name"/>
+                                        <field name = "screening_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string = "Director">
+                                <group>
+                                    <field name = "director_id"/>
+                                </group>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
@@ -91,6 +104,36 @@
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create the first Director
                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="director_form_view">
+            <field name="name">director.form</field>
+            <field name="model">open_cinema.director</field>
+            <field name="arch" type="xml">
+                <form string="Cinema Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Data">
+                                <group>
+                                    <field name="name"/>
+                                    <field name="nacionality"/>
+                                </group>
+                            </page>
+                            <page string="Films">
+                                <field name = "film_director_id">
+                                    <tree string = "Films">
+                                        <field name = "name"/>
+                                        <field name = "release_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
             </field>
         </record>
 
