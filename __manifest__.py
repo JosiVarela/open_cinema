@@ -27,9 +27,8 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/opencinema.xml',
+        'views/reports.xml'
     ],
     'application':True,
-    'demo':[
-        'demo/demo.xml'
-    ],
+    
 }

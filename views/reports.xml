@@ -1,0 +1,79 @@
+<odoo>
+    <report
+        id="report_film"
+        model="open_cinema.film"
+        string="film Report"
+        name="open_cinema.report_film_view"
+        file="open_cinema.report_film"
+        report_type="qweb-pdf" />
+
+    <template id="report_film_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <p><b>Description:</b> <span t-field="doc.description"/></p>
+                        <p><b>Release Date:</b> <span t-field="doc.release_date"/></p>
+                        <p><b>Year:</b> <span t-field="doc.year"/></p>
+                        <p><b>Duration:</b> <span t-field="doc.duration"/></p>
+                        <p><b>Sinopsis:</b> <span t-field="doc.sinopsis"/></p>
+                        <h4>Director</h4>
+                        <p><b>Name:</b> <span t-field="doc.director_id.name"/></p>
+                        <p><b>Nacionality:</b> <span t-field="doc.director_id.nacionality"/></p>
+                        <h4>Screenings</h4>
+                        <ul>
+                            <t t-foreach="doc.screening_id" t-as="screening">
+                                <li>
+                                    <h5 t-field="screening.name"/>
+                                    <p><b>Screening Date:</b> <span t-field="screening.screening_date"/></p>
+                                    <p><b>Responsible:</b> <span t-field="screening.responsible_id"/></p>
+                                    <p><b>Seats:</b> <span t-field="screening.seats"/></p>
+                                    <p><b>Prize:</b> <span t-field="screening.prize"/>€</p>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="report_director"
+        model="open_cinema.director"
+        string="Director report"
+        name="open_cinema.report_director_view"
+        file="open_cinema.report_director"
+        report_type="qweb-pdf"/>
+
+    <template id="report_director_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <p><b>Nacionality:</b><span t-field="doc.nacionality"/></p>
+                        <h5>Directed Films</h5>
+                        <ul>
+                           <t t-foreach="doc.film_director_id" t-as="film">
+                                <li>
+                                    <p><b>Film title: </b><span t-field="film.name"/></p>
+                                    <ul>
+                                        <li><p><b>Description: </b><span t-field="film.description"/></p></li>
+                                        <li><p><b>Release Date: </b><span t-field="film.release_date"/></p></li>
+                                        <li><p><b>Year: </b><span t-field="film.year"/></p></li>
+                                        <li><p><b>Duration: </b><span t-field="film.duration"/></p></li>
+                                        <li><p><b>Sinopsis: </b><span t-field="film.sinopsis"/></p></li>
+                                    </ul>
+                                </li>
+                           </t> 
+                        </ul>
+                        <p><b>Number of minutes:</b><span t-esc="sum([film.duration for film in doc.film_director_id])"/></p>
+                        <p><b>Number of films:</b><span t-esc="len(doc.film_director_id)"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

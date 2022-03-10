@@ -52,7 +52,10 @@
                                 </group>
                             </page>
                             <page string="Description">
+                                <group>
                                 <field name="description"/>
+                                <field name="sinopsis"/>
+                                </group>
                             </page>
                             <page string="Screening">
                                 <field name = "screening_id">
